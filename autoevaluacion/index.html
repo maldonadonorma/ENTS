@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+  <script>
+    if (!window.parent.data_crm) {
+      (function (i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        (i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments);
+        }),
+          (i[r].l = 1 * new Date());
+        (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+      })(
+        window,
+        document,
+        "script",
+        "https://www.google-analytics.com/analytics.js",
+        "ga"
+      );
+      ga("create", "UA-158134453-1", {
+        cookieDomain: "auto",
+      });
+      ga("set", "anonymizeIp", true);
+      ga("set", "dimension1", "CUAIEED");
+      ga("set", "dimension2", "RECURSOS EDUCATIVOS ABIERTOS");
+      ga("set", "dimension3", "RECURSOS EDUCATIVOS MULTIMEDIA");
+      ga("set", "dimension4", "2021");
+      ga("set", "dimension5", "EVALUACIÓN");
+      ga("set", "dimension6", "RA05-21");
+      ga("set", "dimension7", "COMPLETAR ELIGIENDO");
+      ga("set", "dimension8", "VERSIÓN 2.1");
+      ga("set", "metric1", 1);
+      ga("set", "metric2", 2);
+      ga("set", "metric3", 3);
+      ga("set", "metric4", 4);
+      ga("set", "metric5", 5);
+      ga("set", "metric6", 6);
+      ga("set", "metric7", 7);
+      ga("set", "metric8", 8);
+      ga("send", "pageview");
+    }
+  </script>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Completar Eligiendo" />
+  <meta name="keywords" content="UNAM, CUAIEED" />
+  <meta name="author" content="UNAM CUAIEED" />
+  <meta name="news_keywords" content="UNAM, CUAIEED" />
+  <meta name="generator" content="UNAM CUAIEED" />
+  <meta property="og:site_name" content="Completar Eligiendo" />
+  <meta itemprop="name" content="UNAM, CUAIEED" />
+  <meta itemprop="image" content="" />
+  <meta itemprop="description" content="Completar Eligiendo" />
+  <meta property="og:title" content="" />
+  <meta property="og:url" content="" />
+  <meta property="og:type" content="activity" />
+  <meta property="og:description" content="Completar Eligiendo" />
+  <meta property="og:image" content="" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+  <!--
+    3.1 JLBG Ago 12, 2021: Se modifican las retroalimentaciones por respuesta elegida
+		3.0 KDMR Sep 25, 2020: Se tienen retroalimentaciones por arroba o por reactivo, retroalimentacion general.
+		3.0 KDMR Sep 25, 2020: Se cuenta debug(mostrar respuesta a lado de la caja de opciones), y ver longitud en reactivos y retroalimentaciones.
+		3.0 KDMR Sep 25, 2020: Se cuenta con poner numeral o alfabetico, además de mezclar reactivos y respuestas.
+		3.0 KDMR Sep 25, 2020: Se agrego siguiente intento en blanco.
+		3.0 KDMR Sep 25, 2020: Se tiene la variable: var mostrarRetroOpcion = false; que se encuentra en reactivos.js
+        3.0 KDMR Sep 25, 2020: Sirve para establecer una retro por opción en la lista de opciones.
+		3.0 KDMR Sep 25, 2020: Se cuenta con máximo de intentos y con esto se tiene el guardado de calificación SCORM de acuerdo a ciertos valores,
+		3.0 KDMR Sep 25, 2020: var guardarCalificacion (-1 calificación más alta, 0 último intento, n número de intento)
+		3.0 KDMR Sep 25, 2020: Se añadio ambiente SCORM y cambio del archivo conectividadSCORM.js creado por RAAR, y código Analytics por JLBG
+        2.2 JLBG Sep 13, 2019: se agregó paginación paramétrica
+    -->
+  <title>Completar Eligiendo V3.1</title>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script> -->
+  <script src="https://lib.cuaieed.unam.mx/R019/js/jquery-v3.2.1.js"></script>
+  <script>
+    var jq321 = jQuery.noConflict();
+  </script>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="https://lib.cuaieed.unam.mx/R019/css/bootstrap-v3.3.7.min.css" />
+  <script src="https://lib.cuaieed.unam.mx/R019/js/bootstrap-v3.3.7.min.js"></script>
+
+  <!-- <script src="js/jqueryui-v1.10.4.min.js"></script> -->
+  <script src="js/reactivos.js"></script>
+  <script src="js/listaReactivos.js"></script>
+  <script src="js/configRecurso.js"></script>
+  <script src="js/completaEligiendo.js"></script>
+  <script src="SCORM/conectividadSCORM.js"></script>
+  <!-- <script src="js/jquery.ui.touch-punch.min.js"></script> -->
+  <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" /> -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="css/font-awesome-v4.7.0.min.css" />
+  <link rel="stylesheet" href="https://lib.cuaieed.unam.mx/R019/css/font-awesome-v4.7.0.min.css" />
+
+  <link rel="stylesheet" href="css/estilos.css" />
+  <link rel="stylesheet" href="css/font.css" />
+  <script src="js/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/sweetalert.css" />
+
+
+  <script defer="" src="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&amp;display=swap"
+    integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+    crossorigin="anonymous"></script>
+
+
+
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i" rel="stylesheet"> -->
+  <script>
+    jq321(document).ready(function () {
+      if (mezclarPreguntas) {
+        reordenaArreglo(reactivos);
+      }
+      creaElegir(reactivosMostrar);
+    });
+  </script>
+  <script>
+    jq321(document).ready(function () {
+      jq321('[data-toggle="tooltip"]').each(function () {
+        var options = {
+          html: true,
+        };
+
+        if (jq321(this)[0].hasAttribute("data-type")) {
+          options["template"] =
+            '<div class="tooltip ' +
+            jq321(this).attr("data-type") +
+            '" role="tooltip">' +
+            '	<div class="tooltip-arrow"></div>' +
+            '	<div class="tooltip-inner"></div>' +
+            "</div>";
+        }
+        jq321(this).tooltip(options);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <noscript>Necesitas tener habilitado Javascript para poder continuar</noscript>
+  <section class="container eligiendo">
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+
+
+
+        <div>
+          <div style="color: #304977;
+        font-size: 19px;
+        margin: 20px 0 13px 0; font-weight: initial;">Generalidades sobre demografía
+          </div>
+
+          <div style="min-width:200px;font-family: 'Poppins', sans-serif; font-size: 23px; font-weight: 300;letter-spacing: 1px; color: #FFF;     min-height: 57px; 
+        margin-top: 3px; background:rgba(40, 211, 209, 0.8); padding: 3px 0 0 3px;">
+            <div style="     background: #304977;
+        padding: 11px;
+    
+      margin: 5px 10px 0 10px; width: 85%;"> <i style="     font-size: 28px;
+        margin: 0 9px 0 0;
+        float: left;" class="fas fa-edit"></i> <span style="font-weight: bold; font-size: 30px;">A</span>utoevaluación
+
+              Instrumentos de la información demográfica y su manejo
+
+
+            </div>
+
+          </div>
+          <div style="background: #83b3e0; height: 10px; float: left; margin: 0 0 30px 13px; width: 84.7%;"></div>
+          <div style="clear: both;"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div id="textoInstrucciones">
+          <p id="instr">
+            Cuando necesitamos obtener información acerca de la población del lugar en que vivimos o de cualquier otro
+            sitio del país, y accedemos a las fuentes, es necesario tener precisión de lo que se busca porque existen
+            muchos números que nos pueden confundir.
+            <br>
+            Es menester contar con cierta claridad y manejo del lenguaje en materia demográfica para comprender aquello
+            que buscamos y sus propósitos. Esto agilizará la búsqueda y obtención de información.
+            <br>
+            Existen, según su periodicidad y detalle, distintos instrumentos para levantar información demográfica
+            porque la población del país siempre se encuentra en movimiento, nacen unos, mueren otros, algunos cambian
+            de domicilio o de ocupación. Es por eso que la información demográfica tiene vigencia y alcance que la misma
+            población le asigna. Este ejercicio nos ayudará a reflexionar al respecto.
+            <br>
+            Luego de leer el <a target="_blank" href="poblacionymedioambiente_contanzarosalia.pdf">descargable</a> de
+            esta unidad y del mismo apartado en el material elaborado por <a target="_blank"
+              href="generalidades.pdf">Rosalía Corona</a>, resuelve el siguiente ejercicio. No te fíes del sentido común
+            y procura resolverlo basándote en los
+            contenidos de la unidad.
+            <br>
+            Completa el siguiente texto seleccionando la opción que unifique correctamente las ideas planteadas. Al
+            finalizar podrás conocer tu desempeño.
+
+
+          </p>
+        </div>
+        <span id="mododebug"> - MODO DEBUG ACTIVADO -</span>
+      </div>
+      <br />
+      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="reactivos" id="reactivo">
+          <div class="lista-preguntas">
+            <div></div>
+            <div id="contenedor"></div>
+          </div>
+        </div>
+      </div>
+      <i class="ir-arriba fas fa-chevron-up fa-2x"></i>
+      <div class="pager col-md-12 col-lg-12 col-sm-12 col-xs-12">
+        <div class="barraInferior">
+          <button id="btnPrevio" class="btn btn-primary invisible cPrevio cPaginador" onClick="paginar('cPrevio')">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button id="btnPaginador" class="btn ocultar"></button>
+          <!--  para poner paginado -->
+          <button id="btnProximo" class="btn btn-primary invisible cProximo cPaginador" onClick="paginar('cProximo')">
+            <i class="fas fa-chevron-right"></i></button><br />
+          <button id="btnRevisar" class="btn btn-primary" onClick="revisar()">
+            Revisar
+          </button>
+          <button id="btnReiniciar" class="btn btn-primary" onClick="continuar()">
+            Siguiente intento
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

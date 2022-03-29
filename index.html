@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="es-MX">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/fuentes.css">
+  <link id="cssArchivo" rel="stylesheet" href="css/estilos.css">
+  <!-- <link rel="shortcut icon" href="img/ircfavicon.ico"> -->
+  <title>Unidad 1. Población y Medio Ambiente</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+  <link rel="stylesheet" href="icomoon/style.css">
+
+  <script>
+    var pesoGeneral = 20; //peso de control
+    var screenWidth = screen.width;
+    var screenHeight = screen.height;
+
+    function getHeightDoc(frame, opcion, border) {
+      var altura = 0;
+      var elementoA = document.getElementById(opcion);
+      var elementoB = $("#" + opcion);
+
+      //peso control si es dispositivo pequeño
+      if (screen.width <= 680) {
+        border = 0;
+        console.log("peso control:");
+      } //fin if
+      else if (screen.width <= 1280) {
+        border = Math.round(pesoGeneral / 2);
+      } else {
+        border = pesoGeneral;
+      } //fin else
+
+      if (elementoA) {
+        if (elementoA.offsetHeight > 0) {
+          altura = elementoA.offsetHeight + border;
+          //alert("offsetHeight="+elementoA.offsetHeight);
+        } else if (elementoA.clientHeight > 0) {
+          altura = elementoA.clientHeight + border;
+          //alert("clientHeight="+elementoA.clientHeight);
+        } else if (elementoA.height > 0) {
+          altura = elementoA.height + border;
+          //alert("height="+elementoA.height);
+        }
+        //alert("[JS]"+opcion+"="+altura);
+      } else if (elementoB != null) {
+        altura = $("#" + opcion).height() + border;
+        ///alert("[JQ]"+opcion+"="+altura);
+      } else {
+        altura = document.height + border;
+        //alert("[N]"+opcion+"="+altura);
+      }
+      //alert(opcion+"="+altura);
+      var fpadre = parent.document.getElementById(frame); //update 20170823
+      fpadre.setAttribute("height", altura); //da valor a frame superior
+
+      console.log("existe nivel 1 " + fpadre.name + " :: " + fpadre.height + " valor:" + altura);
+      console.log("muestra::" + $("#muestra").height());
+      //window.parent.document.getElementById(frame).height = altura;
+      //$("#"+frame, window.parent.document).attr("height",altura);
+    } //fin function
+
+
+    // redimenciona si hay cambio en tamaño de pantalla
+    function aplicaDimensionar() {
+      console.log(screenWidth + " // " + screen.width);
+      //if(screenWidth != screen.width || screenHeight != screen.height){
+      getHeightDoc('principal', 'muestra', pesoGeneral); //ajustamos valores
+      screenWidth = screen.width;
+      screenHeight = screen.height
+      console.log("revisa y cambia x tamaño de pantalla");
+      //}//fin if
+
+      //}  
+    } //fin aplicaDimensionar
+    //cada 3 segundos revisa
+    setInterval(function () {
+      aplicaDimensionar();
+    }, 3000);
+  </script>
+
+</head>
+
+<body id="muestra" onLoad="getHeightDoc('principal','muestra',pesoGeneral);"
+  onResize="getHeightDoc('principal','muestra',pesoGeneral);">
+
+  <!-- HEADER -->
+  <header class="header borde fancy-border animate__animated animate__fadeInDown d-flex align-items-end">
+    <div class="w-100">
+      <div class="container p-0">
+
+        <div class="row w100 d-flex align-items-stretch m-0" style="max-height: 150px;">
+
+          <div class="col-md-6 d-flex align-items-end principal">
+            <div class="animate__animated animate__fadeInUp pt-5">
+              <h1 class="header__titulo--bold  pt-5 p-unidad">
+                Unidad 1
+              </h1>
+            </div>
+          </div>
+
+          <div class="col-md-6 d-flex align-items-start justify-content-end animate__animated animate__fadeIn">
+            <img class="mb-4 ts-img " src="img/TS.svg" alt="" srcset="" style="height:180px; width: auto;">
+
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="container-fluid p-0">
+        <div class="pt-4 pb-3 title-cont-max px-0">
+          <div class="pt-3 mt-4 pb-2 title-cont-min">
+            <h2 class="text-center text-white animate__animated animate__fadeInRight">Generalidades sobre Demografía
+            </h2>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </header>
+  <!-- HEADER -->
+
+  <main class="main">
+    <!-- DATOS -->
+    <!--  <section class=" pb-0 bg-light-gray">
+      <article class="container">
+        <div class="row  pt-5 pb-4">
+          <h2 class="presentacion__titulo text-center">Datos de la asignatura</h2>
+          <div class="col-md-8 px-5">
+
+
+            <p class="text-left">
+              <b>Autor:</b> Lic. Amelia Margarita Contreras Tébar <br>
+
+              <b>Actualización para bloques:</b> Lic. Amelia Margarita Contretar Tébar y Mtra. Beatriz Gisela Barba
+              Álvarez <br>
+
+              <b>Área:</b> Metodología y práctica de trabajo social <br>
+
+              <b>Semestre:</b> Noveno
+            </p>
+
+
+          </div>
+
+          <div class="col-md-4 px-5">
+
+
+            <p class="text-left">
+              <b>Carácter:</b> Obligatoria <br>
+              <b>Créditos:</b> 5 <br>
+              <b>Duración:</b> 64 horas <br>
+              <b>Modalidad:</b> A distancia
+            </p>
+
+
+
+          </div>
+
+
+
+        </div>
+      </article>
+    </section> -->
+    <!-- DATOS -->
+
+    <!-- ACCESIBILIDAD -->
+    <section class="container">
+      <div class="accesibilidad col-xs-12 col-lg-12 animate__animated animated_slideInLeft" aria-hidden="true">
+        <ul class="accesibilidad__ul">
+          <li class="accesibilidad__li" id="alto">
+            <a onclick="cambiarArchivoCss('css/estilos.css');"><i class="icon-sun" title="Contraste normal"></i></a>
+          </li>
+          <li class="accesibilidad__li" id="bajo">
+            <a onclick="cambiarArchivoCss('css/alto.css');"><i class="icon-moon" title="Alto contraste"></i></a>
+          </li>
+          <li class="accesibilidad__li" id="restaurar">
+            <a onclick="zoomOut();"><i class="icon-a" title="Disminuye el tamaño del texto"></i></a>
+          </li>
+          <li class="accesibilidad__li" id="aumentar">
+            <a onclick="zoomIn();"><i class="icon-a1" title="Aumenta el tamaño del texto"></i></a>
+          </li>
+          <li class="accesibilidad__li">
+            <a onClick="window.print();"><i class="icon-printer" title="Imprimir"></i></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- ACCESIBILIDAD -->
+
+    <section class="presentacion">
+      <article class="container">
+        <div class="row pt-5 pb-4">
+          <div class="col-lg-7 col-md-6 p-md-5">
+            <!-- <p class="text-left">
+              Bienvenida
+            </p> -->
+            <p class="text-left">
+              La historia del estudio de la población y su territorio se encuentra estrechamente relacionada con la
+              historia de México desde sus orígenes: el periodo prehispánico, su etapa colonial y hasta el
+              contemporáneo. La información geográfica como herramienta necesaria para gobernar ha sido una constante
+              durante toda la historia de nuestro país. La importancia que tiene el conocimiento específico del
+              territorio, tanto por la existencia y disposición de todos sus recursos naturales como por las
+              características de la población que lo habita, así como la relación que existe entre ellos, ha sido desde
+              siempre una preocupación en todos los sistemas de gobierno por los que este país ha pasado.</p>
+            <p class="text-left">
+              Del mismo modo, desde los fines del imperio romano en Europa, como en muchas otras partes del mundo, la
+              relación entre la población, el espacio en el que habita y su gobierno en cualquiera de sus formas son
+              determinantes para la paz y el progreso. Conceptos como Estado, nación y territorio han sido
+              preocupaciones de la ciencia política y determinantes de la economía por contar con dos variables
+              inestables: de un lado, los recursos naturales y, por el otro, la población. Por su parte, los recursos
+              naturales que se encuentran mucho más vinculados al territorio que la población que los aprovecha; la
+              tierra fértil para sembrar, la construcción de ciudades, el relieve, el clima o la existencia de recursos
+              minerales son características propias del territorio nacional que no se pueden mover hacia otro lugar, en
+              cambio, la mano de obra y la fuerza de trabajo son capacidades inherentes a la población que puede
+              procurar su vivienda en donde los recursos existen. Es por ello que en el programa de las asignaturas que
+              componen la licenciatura en Trabajo Social es imprescindible una materia que describa las relaciones entre
+              la población y su territorio, así como los hechos y fenómenos político-sociales en que vive la población,
+              como las características principales con que cuenta la superficie en la que esta población vive. Así, la
+              asignatura de Población y medio ambiente pretende bosquejar algunos fenómenos sociales que todos los
+              mexicanos, sin importar su etnia, creencia, origen o idioma, nos encontramos inmersos por formar: una
+              constante interacción con el medio ambiente.
+
+            </p>
+
+          </div>
+
+          <div class="col-lg-5 col-md-6 p-md-5">
+
+            <div class="bg-primario po-relative">
+              <div class="p-5 objetivo text-white">
+                <h5 class="p-objetivo">Objetivo particular</h5>
+                <p>
+                  Al terminar la unidad, podrás:
+                </p>
+                <p>
+                  A partir de las lecturas realizadas a lo largo de la unidad, reconocer la finalidad de la demografía,
+                  las teorías que la han nutrido en el tiempo, así como el uso de fuentes empleadas en el análisis de
+                  información demográfica para ubicar los cambios que experimenta la población en su dinámica y
+                  estructura y correlacionarlos con la práctica profesional del trabajador social
+                </p>
+
+              </div>
+            </div>
+
+            <div class="pt-5">
+              <div class="po-relative">
+
+                <div class="px-5 pt-4 pb-2 bg-primario">
+                  <h5 class="text-white p-objetivo">Temas</h5>
+                </div>
+                <div class="px-5 pt-3 pb-4 text-white bg-secundario">
+                  <p>
+                    <b> T1.</b><br>
+                    Conceptos básicos<br>
+                    <b> T2.</b><br>
+                    Una aproximación a las teorías poblacionales<br>
+                    <b> T3.</b><br>
+                    Fuentes de información demográfica <br>
+
+
+                  </p>
+                </div>
+
+                <div class="unidades"></div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+        </div>
+
+
+      </article>
+      <script src="https://kit.fontawesome.com/e17bdd48d6.js" crossorigin="anonymous"></script>
+
+      <div>
+
+        <div style="min-width:200px;font-family: 'Poppins', sans-serif; font-size: 23px; font-weight: 300;letter-spacing: 1px; color: #FFF;     min-height: 57px; 
+    margin-top: 3px; background:rgba(40, 211, 209, 0.8); padding: 3px 0 0 3px;">
+          <div style="     background: #304977;
+    padding: 11px;
+
+  margin: 5px 10px 0 10px; width: 85%;"> <i style="font-size:28px;margin-left: 5px;" class="fas fa-book"></i> <span
+              style="font-weight: bold; font-size: 30px;">S</span>ecuencia didáctica
+          </div>
+
+        </div>
+        <div style="background: #83b3e0; height: 10px; float: left; margin: 0 0 30px 13px; width: 84.7%;"></div>
+        <div style="clear: both;"></div>
+      </div>
+
+      <P style="padding-left: 30px;"><b><a href="autoevaluacion/index.html" target="_blank"> Autoevaluación</a></b></P>
+      <P style="padding-left: 30px;"><b><a href="descargable.pdf"> Descargable</a></b></P>
+
+
+
+    </section>
+
+
+
+  </main>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+  <script src="js/usabilidad.js"></script>
+
+</body>
+
+</html>
